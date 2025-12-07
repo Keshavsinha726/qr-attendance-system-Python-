@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>A.N College | Student Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #eef2f5;
+        }
+
+        /* HEADER */
+        .header {
+            display: flex;
+            align-items: center;
+            background: #003366;
+            color: #fff;
+            padding: 15px 25px;
+        }
+
+        .header img {
+            height: 55px;
+            margin-right: 15px;
+            background: #fff;
+            padding: 5px;
+            border-radius: 6px;
+        }
+
+        .header h1 {
+            font-size: 22px;
+            margin: 0;
+        }
+
+        .header p {
+            font-size: 13px;
+            margin: 2px 0 0;
+            opacity: 0.9;
+        }
+
+        /* CONTAINER */
+        .main {
+            max-width: 700px;
+            margin: 30px auto;
+            background: #fff;
+            padding: 25px 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+        }
+
+        .main h2 {
+            margin-top: 0;
+            color: #003366;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 8px;
+        }
+
+        .info-row {
+            display: flex;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 14px;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .label {
+            width: 160px;
+            color: #555;
+            font-weight: 600;
+        }
+
+        .value {
+            color: #222;
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <img src="{{ url_for('static', filename='img/an_college_logo.png') }}">
+    <div>
+        <h1>A.N College, Patna</h1>
+        <p>Student Dashboard – Attendance Management System</p>
+    </div>
+</div>
+
+<!-- CONTENT -->
+<div class="main">
+    <h2>Student Information</h2>
+
+    {% if student %}
+        <div class="info-row">
+            <div class="label">Student ID</div>
+            <div class="value">{{ student['student_id'] }}</div>
+        </div>
+
+        <div class="info-row">
+            <div class="label">Name</div>
+            <div class="value">{{ student['name'] }}</div>
+        </div>
+
+        <div class="info-row">
+            <div class="label">Roll No</div>
+            <div class="value">{{ student['roll_no'] }}</div>
+        </div>
+
+        <div class="info-row">
+            <div class="label">Class</div>
+            <div class="value">{{ student['class'] }}</div>
+        </div>
+
+        <div class="info-row">
+            <div class="label">Session</div>
+            <div class="value">{{ student['session'] }}</div>
+        </div>
+
+        <div class="info-row">
+            <div class="label">Email</div>
+            <div class="value">{{ student['email'] }}</div>
+        </div>
+    {% else %}
+        <p>No student data found</p>
+    {% endif %}
+</div>
+
+</body>
+</html>

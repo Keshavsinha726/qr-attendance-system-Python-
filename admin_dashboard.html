@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>A.N College | Admin Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #eef2f5;
+        }
+
+        /* HEADER */
+        .header {
+            display: flex;
+            align-items: center;
+            background: #003366;
+            color: white;
+            padding: 15px 25px;
+        }
+
+        .header img {
+            height: 55px;
+            margin-right: 15px;
+            background: white;
+            padding: 5px;
+            border-radius: 6px;
+        }
+
+        .header h1 {
+            font-size: 22px;
+            margin: 0;
+        }
+
+        .header p {
+            font-size: 13px;
+            margin-top: 2px;
+            opacity: 0.9;
+        }
+
+        /* CONTAINER */
+        .container {
+            width: 95%;
+            margin: 30px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            margin-top: 15px;
+        }
+
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background: #006699;
+            color: white;
+        }
+
+        tr:hover {
+            background: #f3f8fc;
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <img src="{{ url_for('static', filename='img/an_college_logo.png') }}">
+    <div>
+        <h1>A.N College, Patna</h1>
+        <p>Admin Dashboard – Student Records</p>
+    </div>
+</div>
+
+<!-- CONTENT -->
+<div class="container">
+    <h2>All Registered Students</h2>
+
+    <table>
+        <tr>
+            <th>Student ID</th>
+            <th>Name</th>
+            <th>Roll No</th>
+            <th>Class</th>
+            <th>Session</th>
+            <th>Email</th>
+        </tr>
+
+        {% for s in students %}
+        <tr>
+            <td>{{ s['student_id'] }}</td>
+            <td>{{ s['name'] }}</td>
+            <td>{{ s['roll_no'] }}</td>
+            <td>{{ s['class'] }}</td>
+            <td>{{ s['session'] }}</td>
+            <td>{{ s['email'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+</body>
+</html>

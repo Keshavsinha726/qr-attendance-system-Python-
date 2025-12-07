@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>A.N College – Login Portal</title>
+    <!-- Google Font (optional, for better look) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #003366, #006699);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: #ffffff;
+            width: 900px;
+            max-width: 95%;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            padding: 30px 40px;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+
+        .header img {
+            height: 60px;
+            margin-right: 15px;
+        }
+
+        .header-text h1 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #003366;
+        }
+
+        .header-text p {
+            font-size: 13px;
+            color: #555;
+        }
+
+        .login-panels {
+            display: flex;
+            gap: 30px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            flex: 1 1 300px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px 25px;
+            background: #fafafa;
+        }
+
+        .card h2 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: #003366;
+        }
+
+        .card small {
+            font-size: 11px;
+            color: #777;
+        }
+
+        .form-group {
+            margin-top: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            margin-bottom: 4px;
+            color: #555;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 8px 10px;
+            font-size: 13px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            outline: none;
+        }
+
+        .form-group input:focus {
+            border-color: #006699;
+        }
+
+        button {
+            margin-top: 15px;
+            width: 100%;
+            padding: 9px;
+            font-size: 14px;
+            border-radius: 6px;
+            border: none;
+            background: #006699;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #00507d;
+        }
+
+        .note {
+            margin-top: 8px;
+            font-size: 11px;
+            color: #888;
+        }
+
+        @media (max-width: 700px) {
+            .login-panels {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- College Header -->
+    <div class="header">
+        <img src="{{ url_for('static', filename='img/an_college_logo.png') }}" alt="A.N College Logo">
+        <div class="header-text">
+            <h1>A.N College, Patna</h1>
+            <p>Official Attendance Management Portal</p>
+        </div>
+    </div>
+
+    <div class="login-panels">
+        <!-- Admin Login Card -->
+        <div class="card">
+            <h2>Admin Login</h2>
+            <small>For authorized admin users only</small>
+
+            <form method="post" action="/admin_login">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" name="username" placeholder="Enter admin username" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" name="password" placeholder="Enter password" required>
+                </div>
+
+                <button type="submit">Login as Admin</button>
+
+                <p class="note">Default: username <b>admin</b>, password <b>admin123</b> (for demo)</p>
+            </form>
+        </div>
+
+        <!-- Student Login Card -->
+        <div class="card">
+            <h2>Student Login</h2>
+            <small>View your profile and attendance report</small>
+
+            <form method="post" action="/student_login">
+                <div class="form-group">
+                    <label>Student ID</label>
+                    <input type="text" name="student_id" placeholder="Enter your Student ID" required>
+                </div>
+
+                <button type="submit">Login as Student</button>
+
+                <p class="note">Use the Student ID printed on your ID card / QR code.</p>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
